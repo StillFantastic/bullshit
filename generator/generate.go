@@ -49,7 +49,7 @@ func Generate(topic string, minLen int) string {
 	rand.Seed(time.Now().UnixNano())
 	var ret string
 	indent := "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-	for utf8.RuneCountInString(ret) < minLen {
+	for utf8.RuneCountInString(ret) < minLen && ret[len(ret)-1:] != "." {
 		x := rand.Intn(100)
 		if x < 5 && utf8.RuneCountInString(ret) != 0 && ret[len(ret)-1:] == "." {
 			ret += "<br><br>" + indent
