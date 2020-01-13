@@ -51,7 +51,8 @@ func Generate(topic string, minLen int) string {
 	for utf8.RuneCountInString(ret) < minLen {
 		x := rand.Intn(100)
 		if x < 5 && utf8.RuneCountInString(ret) != 0 && ret[len(ret)-1:] == "." {
-			ret += "<br><br>&nbsp;&nbsp;"
+			ret += "<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+			minLen += 10
 		} else if x < 20 {
 			if len(shuffledFamous) == 0 {
 				break
