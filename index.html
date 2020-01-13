@@ -70,7 +70,7 @@
             data: JSON.stringify({ Topic: topic, MinLen: minLen }),
             dataType: "text",
             success: function(r) {
-              $("#content").text(r)
+              $("#content").html(r)
               bullshit.closeButtonLoading(e.target)
             }
           })
