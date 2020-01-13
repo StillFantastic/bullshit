@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"github.com/rs/cors"
+	"os"
 )
 
 type Data struct {
@@ -29,7 +30,13 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/bullshit", bullshitHandler)
 	handler := cors.Default().Handler(mux)
-	err := http.ListenAndServe("0.0.0.0:80", handler)
+	var addr string
+	if len(os.Args) < 2 {
+		addr = "0.0.0.0:10000"
+	} else {
+		addr = "0.0.0.0:" + os.Args[1]
+	}
+	err := http.ListenAndServe(addr, handler)
 	if err != nil {
 		fmt.Println(err)
 	}
