@@ -48,10 +48,11 @@ func Generate(topic string, minLen int) string {
 
 	rand.Seed(time.Now().UnixNano())
 	var ret string
+	indent := "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 	for utf8.RuneCountInString(ret) < minLen {
 		x := rand.Intn(100)
 		if x < 5 && utf8.RuneCountInString(ret) != 0 && ret[len(ret)-1:] == "." {
-			ret += "<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+			ret += "<br><br>" + indent
 			minLen += 10
 		} else if x < 20 {
 			if len(shuffledFamous) == 0 {
@@ -74,5 +75,6 @@ func Generate(topic string, minLen int) string {
 			ret += b
 		}
 	}
+	ret = indent + ret
 	return ret
 }
