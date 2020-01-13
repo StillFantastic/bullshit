@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>唬爛產生器</title>
+  </head>
+  
+  <body>
+    <div class="container">
+      <h4>唬爛產生器</h4>
+      <blockquote>
+        <p>繳交報告、湊字數、應付女朋友的好夥伴</p>
+      </blockquote>
+      <blockquote>
+        <div>
+          <div class="input-field" style="margin-top: 15px;">
+            <input id="topic" type="text">
+            <label for="topic">＊請輸入您的主題名稱</label>
+          </div>
+          <div class="input-field" style="margin-top: 15px;">
+            <input id="minlen" type="number">
+            <label for="minlen">＊請輸入字數要求(上限1000)</label>
+          </div>
+          <a class="waves-effect waves-light red darken-4 btn-small pulse" loading-text="產生中..."  id="btn-get-bullshit">產生</a>
+        </div>
+      </blockquote>
+      <div style="margin: 50px; font-weight: 600;">
+        <p id="content"></p>
+      </div>
+    </div>
+  </body>
+  
+  <script type="text/javascript" src="js/materialize.min.js"></script> 
+  <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script>
+    bullshit = {
+      init: function() {
+        document.getElementById("btn-get-bullshit")
+          .addEventListener("click", this.handleGetBullshit);
+      },
+
+      openButtonLoading: function(elem) {
+        elem.classList.add("disabled");
+        elem.setAttribute("origin-text", elem.innerText);
+        elem.innerText = elem.getAttribute("loading-text");
+      },
+
+      closeButtonLoading: function(elem) {
+        elem.classList.remove("disabled");
+        elem.setAttribute("loadign-text", elem.innerText);
+        elem.innerText = elem.getAttribute("origin-text");
+      },
+
+      handleGetBullshit: function(e) {
+        const topic = document.getElementById("topic").value;
+        const minLen = +document.getElementById("minlen").value;
+        if (topic === "" || minLen === 0) return;
+        bullshit.openButtonLoading(e.target);
+
+        setTimeout(() => {
+          $.ajax({
+            url: "http://ec2-18-223-132-77.us-east-2.compute.amazonaws.com:10000/bullshit",
+            type: "post",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ Topic: topic, MinLen: minLen }),
+            dataType: "text",
+            success: function(r) {
+              $("#content").text(r)
+              bullshit.closeButtonLoading(e.target)
+            }
+          })
+        }, 1500);
+      }
+    }
+
+    bullshit.init()
+  </script>
+</html>
