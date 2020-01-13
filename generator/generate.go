@@ -50,8 +50,8 @@ func Generate(topic string, minLen int) string {
 	var ret string
 	for utf8.RuneCountInString(ret) < minLen {
 		x := rand.Intn(100)
-		if x < 5 {
-			ret += ".\n    "
+		if x < 5 && utf8.RuneCountInString(ret) != 0 {
+			ret += ".<br>    "
 		} else if x < 20 {
 			if len(shuffledFamous) == 0 {
 				break
