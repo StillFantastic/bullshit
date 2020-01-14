@@ -17,7 +17,7 @@ type Data struct {
 }
 
 func log(topic string, minLen int) {
-	f, err := os.OpenFile("bullshit_log.txt", os.O_APPEND|os.OWRONLY, 0644)
+	f, err := os.OpenFile("bullshit_log.txt", os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
 		fmt.Println(err)
 		return
