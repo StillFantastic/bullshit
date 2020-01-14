@@ -17,6 +17,8 @@ type Data struct {
 	Bullshit []string
 }
 
+const MAX_LENGTH int = 1000
+
 var data Data
 
 func init() {
@@ -43,6 +45,9 @@ func shuffle(str []string) []string {
 }
 
 func Generate(topic string, minLen int) string {
+	if minLen > MAX_LENGTH {
+		minLen = MAX_LENGTH
+	}
 	shuffledFamous := shuffle(data.Famous)
 	shuffledBullshit := shuffle(data.Bullshit)
 
