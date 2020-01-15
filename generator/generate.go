@@ -44,6 +44,15 @@ func shuffle(str []string) []string {
 	return ret
 }
 
+func countSpecial(str string) int {
+	chars := [...]string{" ", ",", ".", "?", ";", "!", ":"}
+	length := 0
+	for v := range(chars) {
+		length += strings.Count(str, v)
+	}
+	return length
+}
+
 func Generate(topic string, minLen int) string {
 	if minLen > MAX_LENGTH {
 		minLen = MAX_LENGTH
@@ -73,7 +82,7 @@ func Generate(topic string, minLen int) string {
 			after := data.After[rand.Intn(len(data.After))]
 			f = strings.ReplaceAll(f, "a", before)
 			f = strings.ReplaceAll(f, "b", after)
-			minLen += strings.Count(f, " ")
+			minLen += countSpecial(f)
 			ret += f
 		} else {
 			// New bullshit sentence
@@ -83,7 +92,7 @@ func Generate(topic string, minLen int) string {
 			b := shuffledBullshit[0]
 			shuffledBullshit = shuffledBullshit[1:]
 			b = strings.ReplaceAll(b, "x", topic)
-			minLen += strings.Count(b, " ")
+			minLen += countSpecial(b)
 			ret += b
 		}
 	}
