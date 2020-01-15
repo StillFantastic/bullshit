@@ -47,7 +47,7 @@ func shuffle(str []string) []string {
 func countSpecial(str string) int {
 	chars := [...]string{" ", ",", ".", "?", ";", "!", ":"}
 	length := 0
-	for v := range(chars) {
+	for _, v := range(chars) {
 		length += strings.Count(str, v)
 	}
 	return length
