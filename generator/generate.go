@@ -54,13 +54,16 @@ func Generate(topic string, minLen int) string {
 	rand.Seed(time.Now().UnixNano())
 	var ret string
 	indent := "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+
 	for utf8.RuneCountInString(ret) < minLen ||
 		(len(ret) >= 2 && ret[len(ret)-2:] != ". " && ret[len(ret)-1:] != "? ") {
 		x := rand.Intn(100)
 		if x < 5 && utf8.RuneCountInString(ret) != 0 && len(ret) >= 2 && ret[len(ret)-2:] == ". " {
+			// New paragraph
 			ret += "<br><br>" + indent
 			minLen += 10
 		} else if x < 27 {
+			// New famous sentence
 			if len(shuffledFamous) == 0 {
 				break
 			}
@@ -70,14 +73,17 @@ func Generate(topic string, minLen int) string {
 			after := data.After[rand.Intn(len(data.After))]
 			f = strings.ReplaceAll(f, "a", before)
 			f = strings.ReplaceAll(f, "b", after)
+			minLen += strings.Count(f, " ")
 			ret += f
 		} else {
+			// New bullshit sentence
 			if len(shuffledBullshit) == 0 {
 				break
 			}
 			b := shuffledBullshit[0]
 			shuffledBullshit = shuffledBullshit[1:]
 			b = strings.ReplaceAll(b, "x", topic)
+			minLen += strings.Count(b, " ")
 			ret += b
 		}
 	}
