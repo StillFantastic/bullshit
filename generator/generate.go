@@ -45,7 +45,7 @@ func shuffle(str []string) []string {
 }
 
 func countSpecial(str string) int {
-	chars := [...]string{" ", ",", ".", "?", ";", "!", ":"}
+	chars := [...]string{" ", "，", "。", "?", ";", "!", ":"}
 	length := 0
 	for _, v := range(chars) {
 		length += strings.Count(str, v)
@@ -65,9 +65,9 @@ func Generate(topic string, minLen int) string {
 	indent := "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 
 	for utf8.RuneCountInString(ret) < minLen ||
-		(len(ret) >= 2 && ret[len(ret)-2:] != ". " && ret[len(ret)-1:] != "? ") {
+		(len(ret) >= 2 && ret[len(ret)-2:] != "。 " && ret[len(ret)-1:] != "? ") {
 		x := rand.Intn(100)
-		if x < 5 && utf8.RuneCountInString(ret) != 0 && len(ret) >= 2 && ret[len(ret)-2:] == ". " {
+		if x < 5 && utf8.RuneCountInString(ret) != 0 && len(ret) >= 2 && ret[len(ret)-2:] == "。 " {
 			// New paragraph
 			ret += "<br><br>" + indent
 			minLen += 10
