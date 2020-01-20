@@ -4,10 +4,12 @@ import (
 	"bullshit/generator"
 	"encoding/json"
 	"fmt"
-	"net/http"
+	_ "github.com/joho/godotenv/autoload"
 	"github.com/rs/cors"
+	"net/http"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -29,12 +31,28 @@ func log(topic string, minLen int) {
 	}
 }
 
+
+func ipIsBanned(ip string) bool {
+	bannedIp := os.Getenv("BANNED_IP")
+	ipList := strings.Split(bannedIp, ",")
+	for _, v := range ipList {
+		if strings.Count(ip, v) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
 func bullshitHandler(w http.ResponseWriter, r *http.Request) {
 	var d Data
 	err := json.NewDecoder(r.Body).Decode(&d)
 	if err != nil {
 		fmt.Println(err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	if ipIsBanned(r.RemoteAddr) {
+		return
 	}
 
 	log(d.Topic, d.MinLen)
