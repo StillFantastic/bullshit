@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151628009-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-151628009-2');
+    </script>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
@@ -89,7 +98,7 @@
 
         setTimeout(() => {
           $.ajax({
-            url: "http://ec2-18-223-132-77.us-east-2.compute.amazonaws.com:10000/bullshit",
+            url: "https://api.howtobullshit.me/bullshit",
             type: "post",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ Topic: topic, MinLen: minLen }),
