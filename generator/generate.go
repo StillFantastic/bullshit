@@ -77,9 +77,10 @@ func Generate(topic string, minLen int) string {
 
 	rand.Seed(time.Now().UnixNano())
 	var ret string
+	var hasTopic bool
 	indent := "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 
-	for utf8.RuneCountInString(ret) < minLen || !canEnd(ret) {
+	for utf8.RuneCountInString(ret) < minLen || !canEnd(ret) || !hasTopic {
 		x := rand.Intn(100)
 		if x < 5 && canEnd(ret) {
 			// New paragraph
@@ -99,6 +100,7 @@ func Generate(topic string, minLen int) string {
 			minLen += countSpecial(f)
 			ret += f
 		} else {
+			hasTopic = true
 			// New bullshit sentence
 			if len(shuffledBullshit) == 0 {
 				break
