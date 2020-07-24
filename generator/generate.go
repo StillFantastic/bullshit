@@ -45,7 +45,7 @@ func shuffle(str []string) []string {
 }
 
 func countSpecial(str string) int {
-	chars := [...]string{" ", "，", "。", "?", ";", "!", ":"}
+	chars := [...]string{" ", "，", "。", "？", ";", "！", ":"}
 	length := 0
 	for _, v := range chars {
 		length += strings.Count(str, v)
@@ -61,7 +61,7 @@ func canEnd(str string) bool {
 
 	if runeStr[len(runeStr)-1] == []rune("。")[0] {
 		return true
-	} else if runeStr[len(runeStr)-2] == []rune("?")[0] {
+	} else if runeStr[len(runeStr)-1] == []rune("？")[0] {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func Generate(topic string, minLen int) string {
 	rand.Seed(time.Now().UnixNano())
 	var ret string
 	var hasTopic bool
-	indent := "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+	indent := strings.Repeat("&nbsp;", 8)
 
 	for utf8.RuneCountInString(ret) < minLen || !canEnd(ret) || !hasTopic {
 		x := rand.Intn(100)
