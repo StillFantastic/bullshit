@@ -100,13 +100,15 @@ func Generate(topic string, minLen int) string {
 			minLen += countSpecial(f)
 			ret += f
 		} else {
-			hasTopic = true
 			// New bullshit sentence
 			if len(shuffledBullshit) == 0 {
 				break
 			}
 			b := shuffledBullshit[0]
 			shuffledBullshit = shuffledBullshit[1:]
+			if strings.Contains(b, "x") {
+				hasTopic = true
+			}
 			b = strings.ReplaceAll(b, "x", topic)
 			minLen += countSpecial(b)
 			ret += b
