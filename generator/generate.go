@@ -59,7 +59,7 @@ func canEnd(str string) bool {
 		return false
 	}
 
-	if runeStr[len(runeStr)-2] == []rune("。")[0] {
+	if runeStr[len(runeStr)-1] == []rune("。")[0] {
 		return true
 	} else if runeStr[len(runeStr)-2] == []rune("?")[0] {
 		return true
