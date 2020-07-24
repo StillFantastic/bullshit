@@ -96,7 +96,7 @@
       handleGetBullshit: function(e) {
         const topic = document.getElementById("topic").value;
         const minLen = +document.getElementById("minlen").value;
-        if (topic === "" || minLen === 0) return;
+        if (topic === "" || minLen === 0 || minLen % 1 !== 0) return;
         bullshit.openButtonLoading(e.target);
 
         setTimeout(() => {
