@@ -99,7 +99,7 @@ func bullshitHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(400), http.StatusBadRequest)
 	}
 
-	logRequest(d.Topic, d.MinLen)
+	// logRequest(d.Topic, d.MinLen)
 	ret := generator.Generate(d.Topic, d.MinLen)
 	w.Write([]byte(ret))
 }
