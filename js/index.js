@@ -24,7 +24,7 @@ bullshit = {
 
         setTimeout(() => {
             $.ajax({
-                url: "http://127.0.0.1:1234/bullshit",
+                url: "https://api.howtobullshit.me/bullshit",
                 type: "post",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({ Topic: topic, MinLen: minLen }),
