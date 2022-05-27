@@ -1,22 +1,22 @@
 bullshit = {
-    init: function() {
+    init: function () {
         document.getElementById("btn-get-bullshit")
             .addEventListener("click", this.handleGetBullshit);
     },
 
-    openButtonLoading: function(elem) {
+    openButtonLoading: function (elem) {
         elem.classList.add("disabled");
         elem.setAttribute("origin-text", elem.innerText);
         elem.innerText = elem.getAttribute("loading-text");
     },
 
-    closeButtonLoading: function(elem) {
+    closeButtonLoading: function (elem) {
         elem.classList.remove("disabled");
         elem.setAttribute("loadign-text", elem.innerText);
         elem.innerText = elem.getAttribute("origin-text");
     },
 
-    handleGetBullshit: function(e) {
+    handleGetBullshit: function (e) {
         const topic = document.getElementById("topic").value;
         const minLen = +document.getElementById("minlen").value;
         if (topic === "" || minLen === 0 || minLen % 1 !== 0) return;
@@ -29,7 +29,7 @@ bullshit = {
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({ Topic: topic, MinLen: minLen }),
                 dataType: "text",
-                success: function(r) {
+                success: function (r) {
                     $("#content").html(r)
                     bullshit.closeButtonLoading(e.target)
                 }
