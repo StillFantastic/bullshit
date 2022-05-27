@@ -1,78 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151628009-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'UA-151628009-2');
-    </script>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <link type="text/css" rel="stylesheet" href="css/materialize.social.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>唬爛產生器</title>
-  </head>
-  
-  <body>
-    <main>
+<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151628009-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151628009-2');
+  </script>
+  <meta charset="UTF-8">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+  <link type="text/css" rel="stylesheet" href="css/materialize.social.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Content-Security-Policy"
+    content="script-src 'self' https://*.googletagmanager.com https://code.jquery.com https://www.google-analytics.com 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';">
+
+  <title>唬爛產生器</title>
+</head>
+
+<body>
+  <main>
     <div class="container">
-        <h4>唬爛產生器</h4>
-        <blockquote>
-          <p>繳交報告、湊字數、應付男/女朋友的好夥伴</p>
-        </blockquote>
-        <blockquote>
-          <div>
-            <div class="input-field" style="margin-top: 15px;">
-              <input id="topic" type="text">
-              <label for="topic">＊請輸入您的主題名稱</label>
-            </div>
-            <div class="input-field" style="margin-top: 15px;">
-              <input id="minlen" type="number">
-              <label for="minlen">＊請輸入字數要求(上限1000)</label>
-            </div>
-            <a class="waves-effect waves-light red darken-4 btn-small pulse" loading-text="產生中..."  id="btn-get-bullshit">產生</a>
+      <h4>唬爛產生器</h4>
+      <blockquote>
+        <p>繳交報告、湊字數、應付男/女朋友的好夥伴</p>
+      </blockquote>
+      <blockquote>
+        <div>
+          <div class="input-field" style="margin-top: 15px;">
+            <input id="topic" type="text">
+            <label for="topic">＊請輸入您的主題名稱</label>
           </div>
-        </blockquote>
-        <div style="margin: 50px; font-weight: 600;">
-          <p id="content"></p>
+          <div class="input-field" style="margin-top: 15px;">
+            <input id="minlen" type="number">
+            <label for="minlen">＊請輸入字數要求(上限1000)</label>
+          </div>
+          <a class="waves-effect waves-light red darken-4 btn-small pulse" loading-text="產生中..."
+            id="btn-get-bullshit">產生</a>
         </div>
+      </blockquote>
+      <div style="margin: 50px; font-weight: 600;">
+        <p id="content"></p>
+      </div>
     </div>
-    </main>
-    <footer class="page-footer" style="padding-top: 10px;">
-      <div class="container">
-        <div class="row" style="margin-bottom: 10px;">
-          <div class="col l6 s6">
-            <h5 class="white-text" style="font-family: 'Open Sans', sans-serif;">Developer</h5>
-            <p class="grey-text text-lighten-4">徐子修 Bill Hsu</p>
-          </div>
-          <div class="col l4 offset-l2 s6">
-            <h5 class="white-text" style="font-family: 'Open Sans', sans-serif;">Contact</h5>
-                <a class="waves-effect waves-light btn-floating social github" href="https://github.com/StillFantastic/bullshit">
-                  <i class="fa fa-github" aria-hidden="true"></i>
-                </a>
-                <a class="waves-effect waves-light btn-floating social facebook" href="https://www.facebook.com/profile.php?id=100000395222019">
-                  <i class="fa fa-facebook"></i>
-                </a>
-                <a class="waves-effect waves-light btn-floating social telegram" href="https://t.me/bill_hsu">
-                  <i class="fa fa-telegram"></i>
-                </a>
-          </div>
+  </main>
+  <footer class="page-footer" style="padding-top: 10px;">
+    <div class="container">
+      <div class="row" style="margin-bottom: 10px;">
+        <div class="col l6 s6">
+          <h5 class="white-text" style="font-family: 'Open Sans', sans-serif;">Developer</h5>
+          <p class="grey-text text-lighten-4">徐子修 Bill Hsu</p>
+        </div>
+        <div class="col l4 offset-l2 s6">
+          <h5 class="white-text" style="font-family: 'Open Sans', sans-serif;">Contact</h5>
+          <a class="waves-effect waves-light btn-floating social github"
+            href="https://github.com/StillFantastic/bullshit">
+            <i class="fa fa-github" aria-hidden="true"></i>
+          </a>
+          <a class="waves-effect waves-light btn-floating social facebook"
+            href="https://www.facebook.com/profile.php?id=100000395222019">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a class="waves-effect waves-light btn-floating social telegram" href="https://t.me/bill_hsu">
+            <i class="fa fa-telegram"></i>
+          </a>
         </div>
       </div>
-    </footer>
-  </body>
-  
-  <script type="text/javascript" src="js/materialize.min.js"></script> 
-  <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
+    </div>
+  </footer>
+</body>
+
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
 </html>
