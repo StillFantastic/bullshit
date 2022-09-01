@@ -97,6 +97,7 @@ func bullshitHandler(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&d)
 	if err != nil {
 		http.Error(w, http.StatusText(400), http.StatusBadRequest)
+		return
 	}
 
 	// logRequest(d.Topic, d.MinLen)
